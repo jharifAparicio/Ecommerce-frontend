@@ -1,9 +1,9 @@
 'use client';
-import React, { useEffect}from 'react';
+import React, { useEffect} from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
-const Book = () => {
+function HomePage() {
     const router = useRouter();
 
     useEffect(() => {
@@ -12,11 +12,10 @@ const Book = () => {
             router.push("/login");
         }
     }, [router]);
+
     return (
-        <div className='w-full bg-[#E2DCCC] h-full'>
-            
-        </div>
+        <h1>bienvenido </h1>
     );
 }
 
-export default Book;
+export default HomePage;

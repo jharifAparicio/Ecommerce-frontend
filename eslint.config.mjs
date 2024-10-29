@@ -5,8 +5,16 @@ import pluginReact from "eslint-plugin-react";
 
 
 export default [
-  {files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"]},
-  {languageOptions: { globals: {...globals.browser, ...globals.node} }},
+  {
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node }
+    },
+    rules: {
+      indent: ["error", "tab"],
+      "@typescript-eslint/indent": ["error", "tab"],
+    }
+  },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
