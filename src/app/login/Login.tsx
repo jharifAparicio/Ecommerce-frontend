@@ -16,10 +16,10 @@ const Login = () => {
     };
 
     return (
-        <div className="flex items-center justify-center h-screen bg-cover bg-center">
-            <div className="h-auto w-auto flex flex-col border-4 border-gray-800 backdrop-blur-md shadow-lg rounded-lg bg-gradient-to-r from-sky-500 to-indigo-500">
-                <form id="loginForm" onSubmit={handleSubmit} className="flex flex-col justify-center h-[400px] p-10 bg-transparent">
-                    <h2 className="text-black text-3xl text-center mb-7 mt-0">Login</h2>
+        <div className="flex items-center justify-center bg-cover bg-center bg-[url('../public/img/portadaLogin.jpeg')] m-0 h-screen">
+            <div className="h-auto w-auto flex flex-col border-4 border-gray-800 backdrop-blur-md shadow-lg rounded-lg ">
+                <form id="loginForm" onSubmit={handleSubmit} className="flex flex-col justify-center h-[400px] p-[60px] bg-transparent">
+                    <h2 className="text-white text-2xl text-center mb-7 mt-0">Login</h2>
                     <div className="mb-5">
                         <CustomInput
                             type="text"
