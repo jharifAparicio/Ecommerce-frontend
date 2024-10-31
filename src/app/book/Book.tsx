@@ -14,7 +14,7 @@ const Book = () => {
     }, [router]);
     return (
         <div className='w-full bg-[#E2DCCC] h-full'>
-            
+            <h1>libros</h1>
         </div>
     );
 }
