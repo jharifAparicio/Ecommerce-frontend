@@ -1,7 +1,5 @@
-const API_URL = process.env.BACKEND_API_URL
-
 export const login = async (userName: string, password: string) => {
-    const response = await fetch(`${API_URL}/login`, {
+    const response = await fetch("https://ecommerce-backend-x2ay.onrender.com/api/login", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -9,8 +7,7 @@ export const login = async (userName: string, password: string) => {
         body: JSON.stringify({
             "username":userName,
             "password":password
-        }),
-        credentials: 'include',
+        })
     });
 
     if (!response.ok) {
