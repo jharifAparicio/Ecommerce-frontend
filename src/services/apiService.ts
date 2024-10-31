@@ -1,4 +1,4 @@
-const API_URL = process.env.BACKEND_API_URL /* || 'http://localhost:3001' */;
+const API_URL = process.env.BACKEND_API_URL
 
 export const login = async (userName: string, password: string) => {
     const response = await fetch(`${API_URL}/login`, {
