@@ -10,6 +10,7 @@ export const login = async (userName: string, password: string) => {
             "username":userName,
             "password":password
         }),
+        credentials: 'include',
     });
 
     if (!response.ok) {
