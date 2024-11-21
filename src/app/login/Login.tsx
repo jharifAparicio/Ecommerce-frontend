@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { login } from "@/app/api/login/route";
+import { login } from "@/app/api/login/login";
 import CustomInput from "./components/CustomInput";
 import Cookies from "js-cookie";
 import "@/styles/globals.css";

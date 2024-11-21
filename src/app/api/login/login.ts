@@ -9,7 +9,6 @@ export const login = async (userName: string, password: string) => {
             "password":`${password}`
         })
     });
-    console.log(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/login`);
     if (!response.ok) {
         const errorResponse = await response.json();
         throw new Error(errorResponse.message || 'Error al iniciar sesión');
