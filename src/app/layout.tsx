@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "TIenda de libros",
+  title: "Tienda de libros",
   description: "Tienda de libros",
 };
 
@@ -13,8 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body>
+    <html lang="es" className="w-full h-full">
+      <body className="w-full h-full">
         {children}
       </body>
     </html>
