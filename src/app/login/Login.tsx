@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { login } from "@/app/api/login/login";
+import { login } from "@/app/api/login";
 import CustomInput from "./components/CustomInput";
 import Cookies from "js-cookie";
 import "@/styles/globals.css";
@@ -9,24 +9,38 @@ import "@/styles/globals.css";
 const Login = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const [_, setError] = useState("");
+	const [error, setError] = useState("");
 	const router = useRouter();
+
+	// Clear error message after 3 secondsss
+	useEffect(() => {
+		if(error){
+			const timer  = setTimeout(()=> setError(""), 3000);
+			return () => clearTimeout(timer);
+		}
+	},[error]);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		login(username, password);
 		setError("");
+		if(!username || !password){
+			setError("error: Campos vacíos");
+			return;
+		};
 		try {
 			const res = await login(username, password);
 			if (res && res.token) {
-				Cookies.set("token", res.token, { expires: 1,sameSite: 'None', secure: true });
+				Cookies.set("token", res.token, {
+					expires: 1,
+					sameSite: "None",
+					secure: true,
+				});
 				router.push("/book");
 			} else {
 				setError("error: Token no recibido:");
 			}
 		} catch (err) {
-			console.error(err);
-			setError("error: Error al iniciar sesión");
+			setError("error: Contraseña o usuario incorrecto");
 		}
 	};
 
@@ -48,6 +62,7 @@ const Login = () => {
 							placeholder="Usuario"
 							value={username}
 							onChange={(e) => setUsername(e.target.value)}
+							aria-label="Usuario"
 						/>
 						<CustomInput
 							type="password"
@@ -55,7 +70,9 @@ const Login = () => {
 							placeholder="Contraseña"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
+							aria-label="Contraseña"
 						/>
+						{error && <p className="text-red-500 text-left mt-1">{error}</p>}
 					</div>
 					<div className="flex justify-end">
 						<input

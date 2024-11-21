@@ -1,21 +1,23 @@
-'use client';
-import React, { useEffect} from "react";
+"use client";
+import React from "react";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 
 function HomePage() {
-    const router = useRouter();
-
-    useEffect(() => {
-        const token = Cookies.get("token");
-        if (!token) {
-            router.push("/login");
-        }
-    }, [router]);
-
-    return (
-        <h1>bienvenido </h1>
-    );
+	const router = useRouter();
+	const handleLoginRedirect = () => {
+		router.push("/login");
+	};
+	return (
+		<div>
+			<h1>bienvenido </h1>
+			<button
+				onClick={handleLoginRedirect}
+				className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4"
+			>
+				Ir a login
+			</button>
+		</div>
+	);
 }
 
 export default HomePage;
