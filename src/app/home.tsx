@@ -4,11 +4,13 @@ import { useRouter } from "next/navigation";
 
 function HomePage() {
 	const router = useRouter();
+
 	const handleLoginRedirect = () => {
 		router.push("/login");
 	};
+	
 	return (
-		<div>
+		<>
 			<h1>bienvenido </h1>
 			<button
 				onClick={handleLoginRedirect}
@@ -16,7 +18,7 @@ function HomePage() {
 			>
 				Ir a login
 			</button>
-		</div>
+		</>
 	);
 }
 
