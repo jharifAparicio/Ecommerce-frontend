@@ -9,13 +9,13 @@ const Book = () => {
     useEffect(() => {
         const token = Cookies.get("token");
         if (!token) {
-            router.push("/login");
+            router.push("/");
         }
     }, [router]);
 
     const closeSession = () => {
         Cookies.remove("token");
-        router.push("/login");
+        router.push("/");
     }
     return (
         <div className='w-full bg-[#E2DCCC] h-full'>
