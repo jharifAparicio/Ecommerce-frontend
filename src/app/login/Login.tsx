@@ -35,7 +35,7 @@ const Login = () => {
 					sameSite: "None",
 					secure: true,
 				});
-				router.push("/book");
+				router.push("/");
 			} else {
 				setError("error: Token no recibido:");
 			}

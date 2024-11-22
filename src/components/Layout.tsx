@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 // imports custom components
@@ -8,17 +9,32 @@ import FooterSection from "@/components/FooterSection";
 import HomeIcon from "@/assets/icons/HomeIcon";
 import ProductsIcon from "@/assets/icons/ProductsIcon";
 import RecomentsIcon from "@/assets/icons/RecomentsIcon";
+import CarritoIcon from "@/assets/icons/CarritoIcon";
+// imports socials
 import FacebookIcon from "@/assets/socials/FacebookIcon";
 import TwitterIcon from "@/assets/socials/TwitterIcon";
 import InstagramIcon from "@/assets/socials/InstagramIcon";
 
 import { ReactNode } from "react";
+import Cookies from "js-cookie";
 
 const Layout = ({ children }: { children: ReactNode }) => {
 	const router = useRouter();
+	const [isAuth, setIsAuth] = useState(false);
 
-	const handleLoginRedirect = () => {
-		router.push("/login");
+	useEffect(() => {
+		const token = Cookies.get("token");
+		if (token) {
+			setIsAuth(!!token);
+		}
+	}, []);
+
+	const handleLoginRedirect = (path: string) => {
+		if (isAuth) {
+			router.push(path);
+		} else {
+			router.push("/login");
+		}
 	};
 
 	return (
@@ -38,38 +54,60 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							<HomeIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
 						}
 						title="Inicio"
-						onClick={handleLoginRedirect}
+						onClick={() => handleLoginRedirect("/")}
 					></CustomMenu>
 					<CustomMenu
 						icon={
 							<ProductsIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
 						}
 						title="Productos"
-						onClick={handleLoginRedirect}
+						onClick={() => handleLoginRedirect("/book")}
 					></CustomMenu>
 					<CustomMenu
 						icon={
 							<RecomentsIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
 						}
 						title="Recomendados"
-						onClick={handleLoginRedirect}
+						onClick={() => handleLoginRedirect("/")}
 					></CustomMenu>
+					{isAuth ? (
+						<CustomMenu
+							icon={
+								<CarritoIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
+							}
+							title="Carrito de compras"
+							onClick={() => handleLoginRedirect("/")}
+						></CustomMenu>
+					) : null}
 					<div className="p-4 flex items-center cursor-pointer">
-						<button
-							className="bg-[blue] text-white px-4 py-3 rounded-xl hover:bg-blue-500 text-base font-black hover:text-black"
-							onClick={handleLoginRedirect}
-						>
-							INICIAR SESION
-						</button>
+						{!isAuth ? (
+							<button
+								className="bg-[blue] text-white px-4 py-3 rounded-xl hover:bg-blue-500 text-base font-black hover:text-black"
+								onClick={() => {
+									router.push("/login");
+								}}
+							>
+								Iniciar Sesión
+							</button>
+						) : (
+							<button
+								className="bg-red-500 text-black px-4 py-3 rounded-xl hover:bg-red-700 text-base font-black hover:text-white"
+								onClick={() => {
+									Cookies.remove("token");
+									setIsAuth(false);
+									router.push("/");
+								}}	
+							>
+								Cerrar Sesión
+							</button>
+						)}
 					</div>
 				</div>
 			</header>
 			<main className="bg-custom-gradient h-full">{children}</main>
 			<footer className="bg-marron text-white px-[10%] py-5 h-1/3 flex flex-col items-center justify-center">
 				<div className="flex items-center justify-between w-full mb-5">
-					<FooterSection
-						title="Contantanos"
-					>
+					<FooterSection title="Contantanos">
 						<p className="text-base mx-1 my-0 text-white">
 							📍 Dirección: Calle Ficticia #123, Ciudad
 						</p>
@@ -80,14 +118,12 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							📧 Email: contacto@tu-tienda.com
 						</p>
 					</FooterSection>
-					<FooterSection
-						title="Enlaces Rapidos"
-					>
+					<FooterSection title="Enlaces Rapidos">
 						<ul className="no-underline text-white list-none p-0">
 							<li>
 								<a
 									className="hover:underline cursor-pointer"
-									onClick={handleLoginRedirect}
+									onClick={() => handleLoginRedirect("/")}
 								>
 									Inicio
 								</a>
@@ -95,7 +131,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							<li>
 								<a
 									className="hover:underline cursor-pointer"
-									onClick={handleLoginRedirect}
+									onClick={() => handleLoginRedirect("/book")}
 								>
 									Productos
 								</a>
@@ -103,24 +139,24 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							<li>
 								<a
 									className="hover:underline cursor-pointer"
-									onClick={handleLoginRedirect}
+									onClick={() => handleLoginRedirect("/")}
 								>
 									Recomendamos
 								</a>
 							</li>
-							<li>
-								<a
-									className="hover:underline cursor-pointer"
-									onClick={handleLoginRedirect}
-								>
-									Carrito
-								</a>
-							</li>
+							{isAuth ? (
+								<li>
+									<a
+										className="hover:underline cursor-pointer"
+										onClick={() => handleLoginRedirect("/")}
+									>
+										Carrito
+									</a>
+								</li>
+							) : null}
 						</ul>
 					</FooterSection>
-					<FooterSection
-						title="Siguenos"
-					>
+					<FooterSection title="Siguenos">
 						<div className=" flex flex-row">
 							<FacebookIcon
 								className="w-8 h-8 mr-3 transition-transform duration-300 ease-in-out hover:scale-125 cursor-pointer"
