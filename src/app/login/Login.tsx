@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "@/app/api/login";
-import CustomInput from "./components/CustomInput";
+import CustomInput from "@/components/CustomInput";
 import Cookies from "js-cookie";
 import "@/styles/globals.css";
 
@@ -45,7 +45,7 @@ const Login = () => {
 	};
 
 	return (
-		<div className="flex items-center justify-center bg-cover bg-center bg-[url('../public/portadaLogin.webp')] m-0 h-screen">
+		<div className="flex items-center justify-center bg-cover bg-center bg-[url('../public/webp/portadaLogin.webp')] m-0 h-screen">
 			<div className="h-auto w-auto flex flex-col border-4 border-gray-800 backdrop-blur-md shadow-lg rounded-lg ">
 				<form
 					id="loginForm"

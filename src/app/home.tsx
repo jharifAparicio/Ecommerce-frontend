@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import CustomMenu from "./components/CustomMenu";
-import FooterSection from "./components/FooterSection";
+import CustomMenu from "@/components/CustomMenu";
+import FooterSection from "@/components/FooterSection";
 
 function HomePage() {
 	const router = useRouter();
@@ -53,7 +53,7 @@ function HomePage() {
 					</div>
 				</div>
 			</header>
-			<article className="bg-[url('../public/Welcome.webp')] w-full h-full bg-no-repeat bg-cover bg-center py-[5%] px-0">
+			<article className="bg-[url('../public/webp/Welcome.webp')] w-full h-full bg-no-repeat bg-cover bg-center py-[5%] px-0">
 				<h1 className="my-0 mx-[20%] text-5xl">Bienvenidos</h1>
 				<p className="w-2/4 my-[5%] mx-[20%] text-xl">
 					Explora un universo de historias, conocimiento e inspiración
@@ -82,22 +82,34 @@ function HomePage() {
 					<FooterSection title="Enlaces Rapidos">
 						<ul className="no-underline text-white list-none p-0">
 							<li>
-								<a className="hover:underline" href="#">
+								<a
+									className="hover:underline"
+									onClick={handleLoginRedirect}
+								>
 									Inicio
 								</a>
 							</li>
 							<li>
-								<a className="hover:underline" href="#">
+								<a
+									className="hover:underline"
+									onClick={handleLoginRedirect}
+								>
 									Productos
 								</a>
 							</li>
 							<li>
-								<a className="hover:underline" href="#">
+								<a
+									className="hover:underline"
+									onClick={handleLoginRedirect}
+								>
 									Recomendamos
 								</a>
 							</li>
 							<li>
-								<a className="hover:underline" href="#">
+								<a
+									className="hover:underline"
+									onClick={handleLoginRedirect}
+								>
 									Carrito
 								</a>
 							</li>
