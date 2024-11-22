@@ -1,16 +1,16 @@
-import React from "react"
-import { useRouter } from "next/navigation"
-import Image from "next/image"
+import React from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 // imports custom components
-import CustomMenu from "@/components/CustomMenu"
-import FooterSection from "@/components/FooterSection"
+import CustomMenu from "@/components/CustomMenu";
+import FooterSection from "@/components/FooterSection";
 // imports Icons
-import HomeIcon from "@/assets/icons/HomeIcon"
-import ProductsIcon from "@/assets/icons/ProductsIcon"
-import RecomentsIcon from "@/assets/icons/RecomentsIcon"
-import FacebookIcon from "@/assets/socials/FacebookIcon"
-import TwitterIcon from "@/assets/socials/TwitterIcon"
-import InstagramIcon from "@/assets/socials/InstagramIcon"
+import HomeIcon from "@/assets/icons/HomeIcon";
+import ProductsIcon from "@/assets/icons/ProductsIcon";
+import RecomentsIcon from "@/assets/icons/RecomentsIcon";
+import FacebookIcon from "@/assets/socials/FacebookIcon";
+import TwitterIcon from "@/assets/socials/TwitterIcon";
+import InstagramIcon from "@/assets/socials/InstagramIcon";
 
 import { ReactNode } from "react";
 
@@ -64,12 +64,12 @@ const Layout = ({ children }: { children: ReactNode }) => {
 					</div>
 				</div>
 			</header>
-				<main className="bg-custom-gradient h-full">
-					{children }
-				</main>
+			<main className="bg-custom-gradient h-full">{children}</main>
 			<footer className="bg-marron text-white px-[10%] py-5 h-1/3 flex flex-col items-center justify-center">
-				<div className="flex justify-between w-full mb-5">
-					<FooterSection title="Contantanos">
+				<div className="flex items-center justify-between w-full mb-5">
+					<FooterSection
+						title="Contantanos"
+					>
 						<p className="text-base mx-1 my-0 text-white">
 							📍 Dirección: Calle Ficticia #123, Ciudad
 						</p>
@@ -80,7 +80,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							📧 Email: contacto@tu-tienda.com
 						</p>
 					</FooterSection>
-					<FooterSection title="Enlaces Rapidos">
+					<FooterSection
+						title="Enlaces Rapidos"
+					>
 						<ul className="no-underline text-white list-none p-0">
 							<li>
 								<a
@@ -116,7 +118,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							</li>
 						</ul>
 					</FooterSection>
-					<FooterSection title="Siguenos">
+					<FooterSection
+						title="Siguenos"
+					>
 						<div className=" flex flex-row">
 							<FacebookIcon
 								className="w-8 h-8 mr-3 transition-transform duration-300 ease-in-out hover:scale-125 cursor-pointer"

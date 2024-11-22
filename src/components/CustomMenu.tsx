@@ -4,12 +4,14 @@ interface CustomMenuProps {
 	title: string;
 	onClick: () => void;
 	icon: React.ReactNode;
+	className?: string;
 }
 
 const CustomMenu: React.FC<CustomMenuProps> = ({
 	title,
 	onClick,
 	icon,
+	className,
 }) => {
 	return (
 		<div className="p-4 flex items-center cursor-pointer" onClick={onClick}>
