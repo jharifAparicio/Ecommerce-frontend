@@ -45,7 +45,7 @@ const Login = () => {
 	};
 
 	return (
-		<div className="flex items-center justify-center bg-cover bg-center bg-[url('../public/webp/portadaLogin.webp')] m-0 h-screen">
+		<div className="flex items-center justify-center bg-cover bg-center bg-[url('/webp/portadaLogin.webp')] m-0 h-screen">
 			<div className="h-auto w-auto flex flex-col border-4 border-gray-800 backdrop-blur-md shadow-lg rounded-lg ">
 				<form
 					id="loginForm"

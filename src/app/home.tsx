@@ -1,8 +1,17 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+// imports custom components
 import CustomMenu from "@/components/CustomMenu";
 import FooterSection from "@/components/FooterSection";
+// imports Icons
+import HomeIcon from "@/assets/icons/HomeIcon";
+import ProductsIcon from "@/assets/icons/ProductsIcon";
+import RecomentsIcon from "@/assets/icons/RecomentsIcon";
+import FacebookIcon from "@/assets/socials/FacebookIcon";
+import TwitterIcon from "@/assets/socials/TwitterIcon";
+import InstagramIcon from "@/assets/socials/InstagramIcon";
 
 function HomePage() {
 	const router = useRouter();
@@ -16,30 +25,35 @@ function HomePage() {
 	};
 
 	return (
-		<div className="w-full h-full bg-[#E2DCCC]">
-			<header className="w-full h-1/5 bg-[#CB994E]">
+		<div className="w-full h-full">
+			<header className="w-full h-1/5 bg-marron">
 				<div className="p-4 h-[60%] flex justify-center">
-					<img
-						src="https://res.cloudinary.com/dczydmnqc/image/upload/v1732214880/Ecommers/otros/fnsoq3a7wdrmwzh8lpln.webp"
+					<Image
+						src="/webp/logo.webp"
+						width={78}
+						height={100}
 						alt="logo"
 					/>
 				</div>
 				<div className="flex h-2/5 w-full justify-around p-4 items-center">
 					<CustomMenu
-						alt="home"
-						link="https://res.cloudinary.com/dczydmnqc/image/upload/v1732215055/Ecommers/otros/svg/qp7xaxcv1ypml7e7fhfh.svg"
+						icon={
+							<HomeIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
+						}
 						title="Inicio"
 						onClick={handleLoginRedirect}
 					></CustomMenu>
 					<CustomMenu
-						alt="Productos"
-						link="https://res.cloudinary.com/dczydmnqc/image/upload/v1732215053/Ecommers/otros/svg/rnck052aznmonpkyiyat.svg"
+						icon={
+							<ProductsIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
+						}
 						title="Productos"
 						onClick={handleLoginRedirect}
 					></CustomMenu>
 					<CustomMenu
-						alt="Recomendados"
-						link="https://res.cloudinary.com/dczydmnqc/image/upload/v1732215053/Ecommers/otros/svg/gc6vqgjfxkrmgevoi9ok.svg"
+						icon={
+							<RecomentsIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
+						}
 						title="Recomendados"
 						onClick={handleLoginRedirect}
 					></CustomMenu>
@@ -53,7 +67,7 @@ function HomePage() {
 					</div>
 				</div>
 			</header>
-			<article className="bg-[url('../public/webp/Welcome.webp')] w-full h-full bg-no-repeat bg-cover bg-center py-[5%] px-0">
+			<article className="bg-[url(/webp/Welcome.webp)] w-full h-full bg-no-repeat bg-cover bg-center py-[5%] px-0">
 				<h1 className="my-0 mx-[20%] text-5xl">Bienvenidos</h1>
 				<p className="w-2/4 my-[5%] mx-[20%] text-xl">
 					Explora un universo de historias, conocimiento e inspiración
@@ -66,7 +80,7 @@ function HomePage() {
 					lectura hoy mismo!
 				</p>
 			</article>
-			<footer className="bg-[#CB994E] text-white px-[10%] py-5 h-1/3 flex flex-col items-center justify-center">
+			<footer className="bg-marron text-white px-[10%] py-5 h-1/3 flex flex-col items-center justify-center">
 				<div className="flex justify-between w-full mb-5">
 					<FooterSection title="Contantanos">
 						<p className="text-base mx-1 my-0 text-white">
@@ -83,7 +97,7 @@ function HomePage() {
 						<ul className="no-underline text-white list-none p-0">
 							<li>
 								<a
-									className="hover:underline"
+									className="hover:underline cursor-pointer"
 									onClick={handleLoginRedirect}
 								>
 									Inicio
@@ -91,7 +105,7 @@ function HomePage() {
 							</li>
 							<li>
 								<a
-									className="hover:underline"
+									className="hover:underline cursor-pointer"
 									onClick={handleLoginRedirect}
 								>
 									Productos
@@ -99,7 +113,7 @@ function HomePage() {
 							</li>
 							<li>
 								<a
-									className="hover:underline"
+									className="hover:underline cursor-pointer"
 									onClick={handleLoginRedirect}
 								>
 									Recomendamos
@@ -107,7 +121,7 @@ function HomePage() {
 							</li>
 							<li>
 								<a
-									className="hover:underline"
+									className="hover:underline cursor-pointer"
 									onClick={handleLoginRedirect}
 								>
 									Carrito
@@ -117,22 +131,19 @@ function HomePage() {
 					</FooterSection>
 					<FooterSection title="Siguenos">
 						<div className=" flex flex-row">
-							<img
-								className="w-8 h-8 mr-3 trasiotion duration-300 ease-in-out transform hover:scale-125"
-								src="https://res.cloudinary.com/dczydmnqc/image/upload/v1732215053/Ecommers/otros/svg/socials/xqbroqfwofs0ylwwp4lv.svg"
+							<FacebookIcon
+								className="w-8 h-8 mr-3 transition-transform duration-300 ease-in-out hover:scale-125 cursor-pointer"
+								onClick={handleLoginRedirect}
 								alt="F"
+							></FacebookIcon>
+							<TwitterIcon
+								className="w-8 h-8 mr-3 transition-transform duration-300 ease-in-out hover:scale-125 cursor-pointer"
+								alt="Twitter"
 								onClick={handleCartRedirect}
 							/>
-							<img
-								className="w-8 h-8 mr-3 trasiotion duration-300 ease-in-out transform hover:scale-125"
-								src="https://res.cloudinary.com/dczydmnqc/image/upload/v1732215054/Ecommers/otros/svg/socials/kdq3tn04p4u8mewlwjyl.svg"
-								alt="F"
-								onClick={handleCartRedirect}
-							/>
-							<img
-								className="w-8 h-8 mr-3 trasiotion duration-300 ease-in-out transform hover:scale-125"
-								src="https://res.cloudinary.com/dczydmnqc/image/upload/v1732215053/Ecommers/otros/svg/socials/p7ctmm12cslyfg5rbbfh.svg"
-								alt="F"
+							<InstagramIcon
+								className="w-8 h-8 mr-3 transition-transform duration-300 ease-in-out hover:scale-125 cursor-pointer"
+								alt="X"
 								onClick={handleCartRedirect}
 							/>
 						</div>
