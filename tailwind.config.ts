@@ -7,7 +7,11 @@ export const theme = {
     colors: {
       'marron': '#CB994E',
       'marron-claro': '#E2DCCC',
-    }
+      'anaranjado': '#FFB902',
+    },
+    backgroundImage: {
+      'custom-gradient': 'linear-gradient(to right, #FFB902, #FF9D01)',
+    },
   },
 };
 export const plugins = [];
