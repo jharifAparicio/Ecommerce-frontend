@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import Layout from "@/components/Layout";
+import CustomCartBook from "@/components/CustomCardBook";
 
 const Book = () => {
 	const router = useRouter();
@@ -14,13 +15,22 @@ const Book = () => {
 		}
 	}, [router]);
 
-	const closeSession = () => {
-		Cookies.remove("token");
-		router.push("/");
-	};
+	const handleInformation = () => {
+		console.log("Información del libro");
+	}
+
 	return (
 		<Layout>
-			<h1>libros</h1>
+			<CustomCartBook
+				souce="https://tienda.sophosenlinea.com/imagenes/9788417/978841734762.GIF"
+				alt="Book"
+				titulo="El Principito"
+				author="Antoine de Saint-Exupéry"
+				Price={100}
+				Information={handleInformation}
+			>
+
+			</CustomCartBook>
 		</Layout>
 	);
 };
