@@ -61,7 +61,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							<ProductsIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
 						}
 						title="Productos"
-						onClick={() => handleLoginRedirect("/book")}
+						onClick={() => handleLoginRedirect("/books")}
 					></CustomMenu>
 					<CustomMenu
 						icon={
