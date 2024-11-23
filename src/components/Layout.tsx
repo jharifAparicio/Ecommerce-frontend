@@ -131,7 +131,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							<li>
 								<a
 									className="hover:underline cursor-pointer"
-									onClick={() => handleLoginRedirect("/book")}
+									onClick={() => handleLoginRedirect("/books")}
 								>
 									Productos
 								</a>
