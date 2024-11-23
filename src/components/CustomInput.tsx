@@ -2,14 +2,12 @@ import React from "react";
 
 interface CustomInputProps {
 	type: string;
-	id: string;
 	placeholder: string;
 	value: string;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 const CustomInput: React.FC<CustomInputProps> = ({
 	type,
-	id,
 	placeholder,
 	value,
 	onChange,
@@ -19,7 +17,6 @@ const CustomInput: React.FC<CustomInputProps> = ({
 			<input
 				className="w-full mb-5 p-[15px] border-2 border-black bg-transparent rounded-full text-black outline-none placeholder-gray-500"
 				type={type}
-				id={id}
 				placeholder={placeholder}
 				value={value}
 				onChange={onChange}
