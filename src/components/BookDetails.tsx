@@ -26,12 +26,12 @@ const BookDetails: React.FC<BookDetails> = ({
 			<div className="h-max w-max flex flex-row m-4">
 				<div>
 					<div
-						className="h-[512] w-[512] rounded-lg m-2"
+						className="h-64 w-64 rounded-lg m-2 flex justify-center items-center"
 					>
 						<img
 							src={imageUrl}
 							alt={Title}
-							className={`w-auto h-[512] rounded-2xl shadow-[0_2px_4px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24)]`}
+							className={`w-auto h-64 rounded-2xl shadow-[0_2px_4px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24)]`}
 						/>
 					</div>
 					<p className="mt-2 text-center"> ISBN: {Isbn}</p>
