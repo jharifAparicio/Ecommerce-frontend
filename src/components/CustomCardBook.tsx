@@ -5,7 +5,7 @@ interface CustomCartBookProps {
 	titulo: string;
 	author: string;
 	Price: number;
-    categoria: number;
+	categoria: number;
 	Information: () => void;
 }
 
@@ -14,7 +14,7 @@ const CustomCartBook: React.FC<CustomCartBookProps> = ({
 	titulo,
 	author,
 	Price,
-    categoria,
+	categoria,
 	Information,
 }) => {
 	const [isLoad, setIsLoad] = React.useState(true);
@@ -35,27 +35,19 @@ const CustomCartBook: React.FC<CustomCartBookProps> = ({
 						onLoad={() => setIsLoad(false)}
 					></img>
 				</div>
-                <p className="w-full text-right">{categoria}</p>
-				<h2 className="pt-2 font-semibold">{titulo}</h2>
+				<h2 className="pt-4 font-semibold">{titulo}</h2>
+				<p className="pt-2 w-full text-xs text-center">{categoria}</p>
 			</div>
-			<div className="flex flex-col">
-				<span className="text-xs">{author}</span>
-				<span className="text-[10px]">Bs. {Price}</span>
+			<div className=" w-full flex flex-col ">
+				<span className="">{author}</span>
+				<span className="text-xs">Bs. {Price}</span>
+				<span
+					className="w-full text-left text-blue-600 hover:text-blue-800 hover:cursor-pointer"
+					onClick={Information}
+				>
+					ver más
+				</span>
 			</div>
-			<div>
-				<button className="bg-yellow-400 p-1 rounded-lg m-1 hover:bg-yellow-600 hover:text-white">
-					Me gusta
-				</button>
-				<button className="bg-green-400 p-1 rounded-lg m-1 hover:bg-green-600 hover:text-white">
-					Comprar
-				</button>
-			</div>
-			<span
-				className="w-full text-left text-blue-600 hover:text-blue-800 hover:cursor-pointer"
-				onClick={Information}
-			>
-				ver más
-			</span>
 		</div>
 	);
 };

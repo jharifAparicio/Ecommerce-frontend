@@ -1,4 +1,4 @@
-export async function getBookIsbn(isbn: string) {
+export async function getBookIsbn(isbn: any) {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/book/${isbn}`, {
         method: 'GET',
         headers: {

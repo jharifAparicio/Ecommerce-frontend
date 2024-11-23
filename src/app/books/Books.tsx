@@ -30,8 +30,8 @@ const Book = () => {
 		getBooks();
 	}, []);
 
-	const handleInformation = () => {
-		router.push("/information");
+	const handleInformation = (isbn: string) => {
+		router.push(`/books/${isbn}`);
 	};
 
 	if (loading) {
@@ -49,13 +49,13 @@ const Book = () => {
 			<div className="w-full h-full flex justify-center items-center mx-4">
 				{books.map((book) => (
 					<CustomCartBook
-						key={book.Isbn}
+						key={book.ISBN}
 						souce={book.imageUrl}
 						titulo={book.title}
 						author={book.author}
 						Price={book.price}
 						categoria={book.categories}
-						Information={handleInformation}
+						Information={() => handleInformation(book.ISBN)}
 					/>
 				))}
 			</div>

@@ -34,7 +34,7 @@ const BookDetails: React.FC<BookDetails> = ({
 							className={`w-auto h-[512] rounded-2xl shadow-[0_2px_4px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24)]`}
 						/>
 					</div>
-					<p className="mt-2"> ISBN: {Isbn}</p>
+					<p className="mt-2 text-center"> ISBN: {Isbn}</p>
 				</div>
 				<div className="ml-6 w-full h-full flex flex-col">
 					<h1 className="font-extrabold text-6xl">{Title}</h1>
