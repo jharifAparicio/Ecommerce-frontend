@@ -1,10 +1,10 @@
 import React  from "react";
-import Book from "./Book";
+import Books from "./Books";
 
 export default function Home() {
     return(
         <>
-            <Book />
+            <Books />
         </>
     );
 }
