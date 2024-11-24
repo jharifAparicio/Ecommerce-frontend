@@ -38,7 +38,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 	};
 
 	return (
-		<div className="w-full h-full flex flex-col justify-between">
+		<div className="min-h-screen w-full h-full flex flex-col justify-between">
 			<header className="w-full h-1/5 bg-marron">
 				<div className="p-4 h-[60%] flex justify-center">
 					<Image
@@ -68,7 +68,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							<RecomentsIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
 						}
 						title="Recomendados"
-						onClick={() => handleLoginRedirect("/")}
+						onClick={() => handleLoginRedirect("/books")}
 					></CustomMenu>
 					{isAuth ? (
 						<CustomMenu
@@ -76,7 +76,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 								<CarritoIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
 							}
 							title="Carrito de compras"
-							onClick={() => handleLoginRedirect("/")}
+							onClick={() => handleLoginRedirect("/ShopingCart")}
 						></CustomMenu>
 					) : null}
 					<div className="p-4 flex items-center cursor-pointer">
@@ -104,7 +104,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
 					</div>
 				</div>
 			</header>
-			<main className="bg-custom-gradient h-full">{children}</main>
+			<main className="bg-custom-gradient h-full w-full flex justify-center items-center">
+				{ children }
+			</main>
 			<footer className="bg-marron text-white px-[10%] py-5 h-1/3 flex flex-col items-center justify-center">
 				<div className="flex items-center justify-between w-full mb-5">
 					<FooterSection title="Contantanos">
@@ -148,7 +150,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 								<li>
 									<a
 										className="hover:underline cursor-pointer"
-										onClick={() => handleLoginRedirect("/")}
+										onClick={() => handleLoginRedirect("/ShopingCart")}
 									>
 										Carrito
 									</a>
