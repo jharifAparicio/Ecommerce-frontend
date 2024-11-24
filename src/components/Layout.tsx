@@ -96,7 +96,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 									Cookies.remove("token");
 									setIsAuth(false);
 									router.push("/");
-								}}	
+								}}
 							>
 								Cerrar Sesión
 							</button>
@@ -105,7 +105,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 				</div>
 			</header>
 			<main className="bg-custom-gradient h-full w-full flex justify-center items-center">
-				{ children }
+				{children}
 			</main>
 			<footer className="bg-marron text-white px-[10%] py-5 h-1/3 flex flex-col items-center justify-center">
 				<div className="flex items-center justify-between w-full mb-5">
@@ -133,7 +133,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							<li>
 								<a
 									className="hover:underline cursor-pointer"
-									onClick={() => handleLoginRedirect("/books")}
+									onClick={() =>
+										handleLoginRedirect("/books")
+									}
 								>
 									Productos
 								</a>
@@ -141,20 +143,38 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							<li>
 								<a
 									className="hover:underline cursor-pointer"
-									onClick={() => handleLoginRedirect("/")}
+									onClick={() =>
+										handleLoginRedirect("/books")
+									}
 								>
 									Recomendamos
 								</a>
 							</li>
 							{isAuth ? (
-								<li>
-									<a
-										className="hover:underline cursor-pointer"
-										onClick={() => handleLoginRedirect("/ShopingCart")}
-									>
-										Carrito
-									</a>
-								</li>
+								<>
+									<li>
+										<a
+											className="hover:underline cursor-pointer"
+											onClick={() =>
+												handleLoginRedirect(
+													"/ShopingCart"
+												)
+											}
+										>
+											Carrito
+										</a>
+									</li>
+									<li>
+										<a
+											className="hover:underline cursor-pointer"
+											onClick={() =>
+												handleLoginRedirect("/compras")
+											}
+										>
+											compras
+										</a>
+									</li>
+								</>
 							) : null}
 						</ul>
 					</FooterSection>
@@ -162,18 +182,27 @@ const Layout = ({ children }: { children: ReactNode }) => {
 						<div className=" flex flex-row">
 							<FacebookIcon
 								className="w-8 h-8 mr-3 transition-transform duration-300 ease-in-out hover:scale-125 cursor-pointer"
-								onClick={handleLoginRedirect}
+								onClick={() => {
+									window.location.href =
+										"https://www.facebook.com/groups/1459949740997179";
+								}}
 								alt="F"
 							></FacebookIcon>
 							<TwitterIcon
 								className="w-8 h-8 mr-3 transition-transform duration-300 ease-in-out hover:scale-125 cursor-pointer"
 								alt="Twitter"
-								onClick={handleLoginRedirect}
+								onClick={() => {
+									window.location.href =
+										"https://x.com/holadelibooks";
+								}}
 							/>
 							<InstagramIcon
 								className="w-8 h-8 mr-3 transition-transform duration-300 ease-in-out hover:scale-125 cursor-pointer"
-								alt="X"
-								onClick={handleLoginRedirect}
+								alt="instagram"
+								onClick={() => {
+									window.location.href =
+										"https://www.instagram.com/tienda_de.libros/";
+								}}
 							/>
 						</div>
 					</FooterSection>

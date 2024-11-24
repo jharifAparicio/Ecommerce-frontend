@@ -5,6 +5,8 @@ import CartItems from "@/components/CartItem";
 import CarritoIcon from "@/assets/icons/CarritoIcon";
 import cartUtils, { Product } from "@/utils/cartUtils";
 import buyBook from "@/app/api/comprar";
+import Cookies from "js-cookie";
+import decodeJWT from "@/utils/extractInformationUser";
 
 const ShopingCart = () => {
 	const [cart, setCart] = useState<Product[]>([]);
@@ -17,6 +19,31 @@ const ShopingCart = () => {
 		setCart(updatedCart);
 		cartUtils.removeFromCart(id);
 	};
+
+	const handleBuyAll = async () => {
+		if (cart.length === 0) return;
+		try {
+			const promises = cart.map((item) =>{
+				let total = item.price * (item.quantity ?? 1);
+				buyBook(
+					id_user,
+					item.id,
+					item.quantity || 1,
+					total
+				)}
+			);
+			await Promise.all(promises);
+			setCart([]);
+			cartUtils.clearCart();
+			alert("Compra realizada con exito");
+		} catch (e) {
+			console.error("Error al comprar", e);
+			alert("Error al realizar la compra porfavor intente de nuevo");
+		}
+	};
+
+	const token = Cookies.get("token")?.toString();
+	const id_user = token ? parseInt(decodeJWT(token).id.toString()) : 0;
 
 	return (
 		<Layout>
@@ -54,9 +81,11 @@ const ShopingCart = () => {
 								? "bg-gray-400 cursor-not-allowed"
 								: "bg-[yellow] hover:bg-[rgb(255,255,0,0.5)]"
 						} font-bold border-none py-3 px-5 rounded-lg cursor-pointer`}
-						onClick={() => {}}
+						onClick={() => {
+							handleBuyAll();
+						}}
 					>
-						Comprar todo Bs
+						Comprar todo Bs.
 					</button>
 				</div>
 			</div>
