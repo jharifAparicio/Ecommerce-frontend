@@ -1,11 +1,22 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import CartItems from "@/components/CartItem";
 import CarritoIcon from "@/assets/icons/CarritoIcon";
-import cartUtils from "@/utils/cartUtils";
+import cartUtils, { Product } from "@/utils/cartUtils";
 
 const ShopingCart = () => {
+	const [cart, setCart] = useState<Product[]>([]);
+	useEffect(() => {
+		setCart(cartUtils.getCart());
+	}, []);
+
+	const handleClearCart = (id: number) => {
+		const updatedCart = cart.filter((p) => p.id != id);
+		setCart(updatedCart);
+		cartUtils.removeFromCart(id);
+	};
+
 	return (
 		<Layout>
 			<div className="w-2/3 h-full p-4">
@@ -30,6 +41,7 @@ const ShopingCart = () => {
 							quantity={item.quantity ?? 1}
 							title={item.name}
 							price={item.price}
+							onRemove={handleClearCart}
 						/>
 					))}
 				</div>
