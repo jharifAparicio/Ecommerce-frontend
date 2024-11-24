@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import CartItems from "@/components/CartItem";
 import CarritoIcon from "@/assets/icons/CarritoIcon";
 import cartUtils, { Product } from "@/utils/cartUtils";
+import buyBook from "@/app/api/comprar";
 
 const ShopingCart = () => {
 	const [cart, setCart] = useState<Product[]>([]);
@@ -46,7 +47,15 @@ const ShopingCart = () => {
 					))}
 				</div>
 				<div className="flex justify-end">
-					<button className="bg-[yellow] hover:bg-[rgb(255,255,0,0.5)] font-bold border-none py-3 px-5 rounded-lg cursor-pointer">
+					<button
+						disabled={cart.length === 0}
+						className={`${
+							cart.length === 0
+								? "bg-gray-400 cursor-not-allowed"
+								: "bg-[yellow] hover:bg-[rgb(255,255,0,0.5)]"
+						} font-bold border-none py-3 px-5 rounded-lg cursor-pointer`}
+						onClick={() => {}}
+					>
 						Comprar todo Bs
 					</button>
 				</div>

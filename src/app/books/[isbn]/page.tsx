@@ -44,7 +44,7 @@ const page = () => {
 		);
 	}
 	return (
-		<Layout>
+		<Layout>||
 			{book ? (
 				<BookDetails
 					id={book.id}
