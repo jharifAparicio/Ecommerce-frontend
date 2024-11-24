@@ -44,9 +44,10 @@ const page = () => {
 		);
 	}
 	return (
-		<Layout>
+		<Layout>||
 			{book ? (
 				<BookDetails
+					id={book.id}
 					Isbn={book.ISBN}
 					Title={book.title}
 					Author={book.author}
