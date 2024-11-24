@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
 import Layout from "@/components/Layout";
+import CartItems from "@/components/CartItem";
 import CarritoIcon from "@/assets/icons/CarritoIcon";
-import DolarIcon from "@/assets/icons/dolarIcon";
-import BasuraIcon from "@/assets/icons/basuraIcon";
+import cartUtils from "@/utils/cartUtils";
 
 const ShopingCart = () => {
 	return (
@@ -13,35 +14,24 @@ const ShopingCart = () => {
 						<CarritoIcon className="w-12 h-12" />
 						<p className="text-3xl font-bold pl-2">Mi Carrito</p>
 					</div>
-					<div className="flex flex-col items-end">
-						<p className="text-2xl font-bold">Total en cesta</p>
-						<p className="text-xl font-semibold">0.00 Bs.</p>
-					</div>
 				</div>
 				<div className="flex flex-col p-3 text-white bg-blue-700 rounded-3xl my-3">
-					<div className="flex flex-row justify-between">
-						<p className="text-xl font-semibold pl-2">Articulo</p>
-						<p className="text-xl font-semibold pr-2">precio</p>
+					<div className="text-xl font-semibold justify-items-center grid grid-cols-[.5fr,3fr,1fr,1fr]">
+						<p>Cantidad</p>
+						<p>Articulo</p>
+						<p>Operaciones</p>
+						<p>precio</p>
 					</div>
 					<hr className="w-full bg-white h-[2px]" />
-					<div className="flex flex-row items-center  justify-between px-4">
-						<div className="">
-							<ol>
-								<li>Andando el tiempo - Eraclito Zepeda</li>
-							</ol>
-						</div>
-						<div className="flex flex-row p-2">
-							<div className="mx-1 p-1 rounded-full bg-yellow-400 hover:bg-yellow-600 hover:scale-110">
-								<DolarIcon className="w-8" />
-							</div>
-							<div className="mx-1 p-1 rounded-full bg-red-600 hover:bg-red-500 hover:scale-110">
-								<BasuraIcon className="w-8" />
-							</div>
-						</div>
-						<div>
-							<p>0.00 Bs</p>
-						</div>
-					</div>
+					{cartUtils.getCart().map((item) => (
+						<CartItems
+							id={item.id}
+							key={item.id}
+							quantity={item.quantity ?? 1}
+							title={item.name}
+							price={item.price}
+						/>
+					))}
 				</div>
 				<div className="flex justify-end">
 					<button className="bg-[yellow] hover:bg-[rgb(255,255,0,0.5)] font-bold border-none py-3 px-5 rounded-lg cursor-pointer">

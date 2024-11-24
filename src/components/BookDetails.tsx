@@ -1,8 +1,10 @@
 "use client"
 import React from "react";
 import CustomButton from "./CustomButton";
+import cartUtils from "@/utils/cartUtils";
 
 interface BookDetails {
+	id: number;
 	Isbn: string;
 	Title: string;
 	Author: string;
@@ -13,6 +15,7 @@ interface BookDetails {
 }
 
 const BookDetails: React.FC<BookDetails> = ({
+	id,
 	Isbn,
 	Title,
 	Author,
@@ -46,8 +49,8 @@ const BookDetails: React.FC<BookDetails> = ({
                     <div className="w-full h-full justify-end">
                         <CustomButton 
                             className="bg-green-500 p-1 rounded-lg m-1 hover:bg-green-800 hover:text-white"
-                            onClick={() => console.log("Comprar")}
-                            text="Comprar"
+                            onClick={() => cartUtils.addToCart({ id, name: Title, price: Price, quantity: 1 })}
+                            text="añadir al carrito"
                         />
                     </div>
 				</div>
