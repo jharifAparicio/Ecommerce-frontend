@@ -54,7 +54,7 @@ const Book = () => {
 						titulo={book.title}
 						author={book.author}
 						Price={book.price}
-						categoria={book.categories}
+						categoria={book.category}
 						Information={() => handleInformation(book.ISBN)}
 					/>
 				))}

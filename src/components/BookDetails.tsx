@@ -1,7 +1,8 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import CustomButton from "./CustomButton";
 import cartUtils from "@/utils/cartUtils";
+import Notification from "./Notification";
 
 interface BookDetails {
 	id: number;
@@ -24,13 +25,25 @@ const BookDetails: React.FC<BookDetails> = ({
 	Category,
 	imageUrl,
 }) => {
+	const [notification, setNotification] = useState<string | null>(null);
+
+	const handleAddToCart = () => {
+		cartUtils.addToCart({
+			id,
+			name: Title,
+			price: Price,
+			quantity: 1,
+		});
+		setNotification(Title);
+		setTimeout(() => {
+			setNotification(null);
+		}, 3000);
+	};
 	return (
-		<div className="h-full w-full flex justify-center items-center">
+		<div className="h-auto w-full flex justify-center items-center">
 			<div className="h-max w-max flex flex-row m-4">
 				<div>
-					<div
-						className="h-64 w-64 rounded-lg m-2 flex justify-center items-center"
-					>
+					<div className="h-64 w-64 rounded-lg m-2 flex justify-center items-center">
 						<img
 							src={imageUrl}
 							alt={Title}
@@ -44,15 +57,21 @@ const BookDetails: React.FC<BookDetails> = ({
 					<p className="font-medium text-xl">{Author}</p>
 					<p className="mt-3">{Description}</p>
 					<p>Categoria: {Category}</p>
-                    <br />
-                    <p className="text-2xl">Bs. {Price}</p>
-                    <div className="w-full h-full justify-end">
-                        <CustomButton 
-                            className="bg-green-500 p-1 rounded-lg m-1 hover:bg-green-800 hover:text-white"
-                            onClick={() => cartUtils.addToCart({ id, name: Title, price: Price, quantity: 1 })}
-                            text="añadir al carrito"
-                        />
-                    </div>
+					<br />
+					<p className="text-2xl">Bs. {Price}</p>
+					<div className="w-full h-full">
+						<CustomButton
+							className="bg-green-500 p-1 rounded-lg m-1 hover:bg-green-800 hover:text-white"
+							onClick={() => handleAddToCart()}
+							text="añadir al carrito"
+						/>
+					</div>
+					{notification && (
+						<Notification
+							element={notification}
+							onClose={() => setNotification(null)}
+						/>
+					)}
 				</div>
 			</div>
 		</div>
