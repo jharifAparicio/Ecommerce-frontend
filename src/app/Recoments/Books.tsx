@@ -9,12 +9,15 @@ const Book = () => {
 	const router = useRouter();
 	const [books, setBooks] = useState<any[]>([]);
 	const [loading, setLoading] = useState(true);
+	const [randomBooks, setRandomBooks] = useState<any[]>([]);
 
 	useEffect(() => {
 		const getBooks = async () => {
 			try {
 				const books = await fetchBooks();
 				setBooks(books);
+				const shuffled = [...books].sort(() => Math.random() - 0.5);
+				setRandomBooks(shuffled.slice(0, 3));
 			} finally {
 				setLoading(false);
 			}
@@ -38,8 +41,8 @@ const Book = () => {
 
 	return (
 		<Layout>
-			<div className="w-full h-full flex-wrap flex justify-center items-center mx-4">
-				{books.map((book) => (
+			<div className="w-full h-full flex justify-center items-center mx-4">
+				{randomBooks.map((book) => (
 					<CustomCartBook
 						key={book.id}
 						souce={book.imageUrl}

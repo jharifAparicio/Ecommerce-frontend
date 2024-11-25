@@ -30,15 +30,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
 	}, []);
 
 	const handleLoginRedirect = (path: string) => {
-		if (isAuth) {
 			router.push(path);
-		} else {
-			router.push("/login");
-		}
 	};
 
 	return (
-		<div className="min-h-screen w-full h-full flex flex-col justify-between">
+		<div className="bg-custom-gradient min-h-screen w-full h-auto flex flex-col justify-between">
 			<header className="w-full h-1/5 bg-marron">
 				<div className="p-4 h-[60%] flex justify-center">
 					<Image
@@ -68,7 +64,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 							<RecomentsIcon className="text-blue-500 w-10 h-10 hover:scale-105" />
 						}
 						title="Recomendados"
-						onClick={() => handleLoginRedirect("/books")}
+						onClick={() => handleLoginRedirect("/Recoments")}
 					></CustomMenu>
 					{isAuth ? (
 						<CustomMenu
@@ -85,6 +81,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 								className="bg-[blue] text-white px-4 py-3 rounded-xl hover:bg-blue-500 text-base font-black hover:text-black"
 								onClick={() => {
 									router.push("/login");
+									router.refresh();
 								}}
 							>
 								Iniciar Sesión
@@ -94,6 +91,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 								className="bg-red-500 text-black px-4 py-3 rounded-xl hover:bg-red-700 text-base font-black hover:text-white"
 								onClick={() => {
 									Cookies.remove("token");
+									localStorage.clear();
 									setIsAuth(false);
 									router.push("/");
 								}}
@@ -104,8 +102,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
 					</div>
 				</div>
 			</header>
-			<main className="bg-custom-gradient h-full w-full flex justify-center items-center">
-				{children}
+			<main className="h-auto w-full flex justify-center items-start">
+				{ children }
 			</main>
 			<footer className="bg-marron text-white px-[10%] py-5 h-1/3 flex flex-col items-center justify-center">
 				<div className="flex items-center justify-between w-full mb-5">
@@ -144,37 +142,23 @@ const Layout = ({ children }: { children: ReactNode }) => {
 								<a
 									className="hover:underline cursor-pointer"
 									onClick={() =>
-										handleLoginRedirect("/books")
+										handleLoginRedirect("/Recoments")
 									}
 								>
 									Recomendamos
 								</a>
 							</li>
 							{isAuth ? (
-								<>
-									<li>
-										<a
-											className="hover:underline cursor-pointer"
-											onClick={() =>
-												handleLoginRedirect(
-													"/ShopingCart"
-												)
-											}
-										>
-											Carrito
-										</a>
-									</li>
-									<li>
-										<a
-											className="hover:underline cursor-pointer"
-											onClick={() =>
-												handleLoginRedirect("/compras")
-											}
-										>
-											compras
-										</a>
-									</li>
-								</>
+								<li>
+									<a
+										className="hover:underline cursor-pointer"
+										onClick={() =>
+											handleLoginRedirect("/ShopingCart")
+										}
+									>
+										Carrito
+									</a>
+								</li>
 							) : null}
 						</ul>
 					</FooterSection>

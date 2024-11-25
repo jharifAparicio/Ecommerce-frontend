@@ -38,7 +38,7 @@ const BookDetails: React.FC<BookDetails> = ({
 		}, 3000);
 	};
 	return (
-		<div className="h-auto w-full flex justify-center items-center">
+		<div className="h-auto w-2/3 flex justify-center items-center">
 			<div className="h-max w-max flex flex-row m-4">
 				<div>
 					<div className="h-64 w-64 rounded-lg m-2 flex justify-center items-center">

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
+import {useRouter } from "next/navigation";
 import CartItems from "@/components/CartItem";
 import CarritoIcon from "@/assets/icons/CarritoIcon";
 import cartUtils, { Product } from "@/utils/cartUtils";
@@ -9,10 +10,18 @@ import Cookies from "js-cookie";
 import decodeJWT from "@/utils/extractInformationUser";
 
 const ShopingCart = () => {
+	const router = useRouter();
 	const [cart, setCart] = useState<Product[]>([]);
 	useEffect(() => {
 		setCart(cartUtils.getCart());
 	}, []);
+
+	useEffect(() => {
+		const token = Cookies.get("token");
+		if (!token) {
+			router.push("/");
+		}
+	}, [router]);
 
 	const handleClearCart = (id: number) => {
 		const updatedCart = cart.filter((p) => p.id != id);
