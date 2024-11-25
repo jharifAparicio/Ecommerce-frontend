@@ -19,7 +19,7 @@ const CustomCartBook: React.FC<CustomCartBookProps> = ({
 }) => {
 	const [isLoad, setIsLoad] = React.useState(true);
 	return (
-		<div className="w-52 h-[356px] p-[.8em] bg-[#f5f5f5] relative overflow-visible shadow-[0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24)] rounded-xl flex flex-col items-center justify-between m-2 text-center">
+		<div className="w-52 h-[408px] p-[.8em] bg-[#f5f5f5] relative overflow-visible shadow-[0_1px_3px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24)] rounded-xl flex flex-col items-center justify-between m-2 text-center">
 			<div className="flex flex-col items-center justify-center">
 				<div
 					className={`h-36 w-auto rounded-lg m-2 ${
