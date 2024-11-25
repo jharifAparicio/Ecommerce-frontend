@@ -36,15 +36,15 @@ const Layout = ({ children }: { children: ReactNode }) => {
 	return (
 		<div className="bg-custom-gradient min-h-screen w-full h-auto flex flex-col justify-between">
 			<header className="w-full h-1/5 bg-marron">
-				<div className="p-4 h-[60%] flex justify-center">
+				<div className="pt-2 h-[60%] flex justify-center">
 					<Image
 						src="/webp/logo.webp"
-						width={78}
+						width={100}
 						height={100}
 						alt="logo"
 					/>
 				</div>
-				<div className="flex h-2/5 w-full justify-around p-4 items-center">
+				<div className="flex h-2/5 w-full justify-around items-center">
 					<CustomMenu
 						icon={
 							<HomeIcon className="text-blue-500 w-10 h-10 hover:scale-105" />

@@ -14,7 +14,7 @@ const CustomMenu: React.FC<CustomMenuProps> = ({
 	className,
 }) => {
 	return (
-		<div className="p-4 flex items-center cursor-pointer" onClick={onClick}>
+		<div className="flex items-center cursor-pointer" onClick={onClick}>
 			{icon ?(
 				<span className="m-1 w-10 h-10">{icon}</span>
 			) : null}
