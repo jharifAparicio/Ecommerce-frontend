@@ -34,7 +34,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 	};
 
 	return (
-		<div className="bg-custom-gradient min-h-screen w-full h-full flex flex-col justify-between">
+		<div className="bg-custom-gradient min-h-screen w-full h-auto flex flex-col justify-between">
 			<header className="w-full h-1/5 bg-marron">
 				<div className="p-4 h-[60%] flex justify-center">
 					<Image
@@ -103,7 +103,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 				</div>
 			</header>
 			<main className="h-auto w-full flex justify-center items-start">
-				{children}
+				{ children }
 			</main>
 			<footer className="bg-marron text-white px-[10%] py-5 h-1/3 flex flex-col items-center justify-center">
 				<div className="flex items-center justify-between w-full mb-5">
