@@ -1,5 +1,5 @@
-export async function getBookIsbn(isbn: any) {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/book/${isbn}`, {
+export async function getBookId(id: any) {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/book/${id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

@@ -83,6 +83,7 @@ const ShopingCart = () => {
 						} font-bold border-none py-3 px-5 rounded-lg cursor-pointer`}
 						onClick={() => {
 							handleBuyAll();
+							window.location.href = "/";
 						}}
 					>
 						Comprar todo Bs.

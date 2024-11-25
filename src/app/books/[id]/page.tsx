@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getBookIsbn } from "@/app/api/getBookIsbn";
+import { getBookId } from "@/app/api/getBookIsbn";
 import { useParams, useRouter } from "next/navigation";
 import Layout from "@/components/Layout";
 import BookDetails from "@/components/BookDetails";
 
 const page = () => {
-	const { isbn } = useParams();
+	const { id } = useParams();
 	const router = useRouter();
 
 	const [book, setBook] = useState<any>(null);
@@ -16,7 +16,7 @@ const page = () => {
 	useEffect(() => {
 		const fetchBook = async () => {
 			try {
-				const response = await getBookIsbn(isbn);
+				const response = await getBookId(id);
 				setBook(response);
 			} catch (e) {
 				setError(true);
@@ -26,7 +26,7 @@ const page = () => {
 			}
 		};
 		fetchBook();
-	}, [isbn, router]);
+	}, [id, router]);
 	if (loading) {
 		return (
 			<Layout>
@@ -48,7 +48,6 @@ const page = () => {
 			{book ? (
 				<BookDetails
 					id={book.id}
-					Isbn={book.ISBN}
 					Title={book.title}
 					Author={book.author}
 					Description={book.description}

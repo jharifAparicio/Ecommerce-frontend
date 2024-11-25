@@ -6,7 +6,6 @@ import Notification from "./Notification";
 
 interface BookDetails {
 	id: number;
-	Isbn: string;
 	Title: string;
 	Author: string;
 	Description: string;
@@ -17,7 +16,6 @@ interface BookDetails {
 
 const BookDetails: React.FC<BookDetails> = ({
 	id,
-	Isbn,
 	Title,
 	Author,
 	Description,
@@ -50,7 +48,6 @@ const BookDetails: React.FC<BookDetails> = ({
 							className={`w-auto h-64 rounded-2xl shadow-[0_2px_4px_rgba(0,0,0,0.12),_0_1px_2px_rgba(0,0,0,0.24)]`}
 						/>
 					</div>
-					<p className="mt-2 text-center"> ISBN: {Isbn}</p>
 				</div>
 				<div className="ml-6 w-full h-full flex flex-col">
 					<h1 className="font-extrabold text-6xl">{Title}</h1>
