@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { registerBook } from "@/app/api/RegisterBook";
 
-const router = useRouter();
 const BookForm: React.FC = () => {
+	const router = useRouter();
 	const [formData, setFormData] = useState({
 		title: "",
 		author: "",
@@ -16,7 +16,9 @@ const BookForm: React.FC = () => {
 	});
 
 	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+		e: React.ChangeEvent<
+			HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+		>
 	) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
