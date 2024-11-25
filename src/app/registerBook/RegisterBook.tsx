@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { registerBook } from "@/app/api/RegisterBook";
 
+const router = useRouter();
 const BookForm: React.FC = () => {
 	const [formData, setFormData] = useState({
 		title: "",
@@ -33,6 +35,7 @@ const BookForm: React.FC = () => {
 				formData.category
 			);
 			alert("Book registered successfully");
+			router.refresh();
 		} catch (error) {
 			alert("Error registering book");
 		}
