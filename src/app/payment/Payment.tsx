@@ -19,7 +19,7 @@ function PaymentPage() {
 	const closeModal = () => {
         setIsModalOpen(false);
         setTimeout(() => {
-            window.location.href = "/";
+            window.location.href = "/ShopingCart";
         }, 1000);
 	};
 	return (

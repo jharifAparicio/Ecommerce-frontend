@@ -70,7 +70,6 @@ const CartItem: React.FC<CartItemProps> = ({
 				<div
 					className="mx-1 p-1 rounded-full bg-yellow-400 hover:bg-yellow-600 hover:scale-110"
 					onClick={() => {
-						console.log(id_user);
 						handleDeleteAll();
 						handlebuyBook(
 							id_user,
@@ -78,6 +77,7 @@ const CartItem: React.FC<CartItemProps> = ({
 							itemQuantity,
 							itemQuantity * price
 						);
+						window.location.href = "/payment";
 					}}
 				>
 					<DolarIcon className="w-7" />
