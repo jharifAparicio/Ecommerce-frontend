@@ -30,7 +30,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 	}, []);
 
 	const handleLoginRedirect = (path: string) => {
-			router.push(path);
+		router.push(path);
 	};
 
 	return (
@@ -103,7 +103,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 				</div>
 			</header>
 			<main className="h-auto w-full flex justify-center items-start">
-				{ children }
+				{children}
 			</main>
 			<footer className="bg-marron text-white px-[10%] py-5 h-1/3 flex flex-col items-center justify-center">
 				<div className="flex items-center justify-between w-full mb-5">
@@ -149,16 +149,32 @@ const Layout = ({ children }: { children: ReactNode }) => {
 								</a>
 							</li>
 							{isAuth ? (
-								<li>
-									<a
-										className="hover:underline cursor-pointer"
-										onClick={() =>
-											handleLoginRedirect("/ShopingCart")
-										}
-									>
-										Carrito
-									</a>
-								</li>
+								<>
+									<li>
+										<a
+											className="hover:underline cursor-pointer"
+											onClick={() =>
+												handleLoginRedirect(
+													"/ShopingCart"
+												)
+											}
+										>
+											Carrito
+										</a>
+									</li>
+									<li>
+										<a
+											className="hover:underline cursor-pointer"
+											onClick={() =>
+												handleLoginRedirect(
+													"/HistoryPurchases"
+												)
+											}
+										>
+											Historial
+										</a>
+									</li>
+								</>
 							) : null}
 						</ul>
 					</FooterSection>
