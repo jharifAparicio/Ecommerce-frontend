@@ -41,7 +41,7 @@ const BookForm: React.FC = () => {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="space-y-4 p-4 bg-gray-100 rounded shadow-md max-w-md mx-auto"
+			className="space-y-4 p-4 bg-white rounded shadow-md max-w-md mx-auto"
 		>
 			<div>
 				<label htmlFor="title" className="block font-bold">
