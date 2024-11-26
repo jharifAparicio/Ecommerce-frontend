@@ -1,8 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "./CustomButton";
 import cartUtils from "@/utils/cartUtils";
 import Notification from "./Notification";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 interface BookDetails {
 	id: number;
@@ -23,8 +25,16 @@ const BookDetails: React.FC<BookDetails> = ({
 	Category,
 	imageUrl,
 }) => {
+	const router = useRouter();
 	const [notification, setNotification] = useState<string | null>(null);
+	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
+	useEffect(() => {
+		const token = Cookies.get("token");
+		if (token) {
+			setIsLoggedIn(true);
+		}
+	}, []);
 	const handleAddToCart = () => {
 		cartUtils.addToCart({
 			id,
@@ -57,11 +67,19 @@ const BookDetails: React.FC<BookDetails> = ({
 					<br />
 					<p className="text-2xl">Bs. {Price}</p>
 					<div className="w-full h-full">
-						<CustomButton
-							className="bg-green-500 p-1 rounded-lg m-1 hover:bg-green-800 hover:text-white"
-							onClick={() => handleAddToCart()}
-							text="añadir al carrito"
-						/>
+						{isLoggedIn ? (
+							<CustomButton
+								className="bg-green-500 p-1 rounded-lg m-1 hover:bg-green-800 hover:text-white"
+								onClick={() => handleAddToCart()}
+								text="añadir al carrito"
+							/>
+						) : (
+							<CustomButton
+								className="bg-blue-500 p-1 rounded-lg m-1 hover:bg-blue-800 hover:text-white"
+								onClick={() => router.push("/login")}
+								text="iniciar sesión para comprar"
+							/>
+						)}
 					</div>
 					{notification && (
 						<Notification

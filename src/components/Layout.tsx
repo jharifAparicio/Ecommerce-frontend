@@ -94,6 +94,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 									localStorage.clear();
 									setIsAuth(false);
 									router.push("/");
+									window.location.reload();
 								}}
 							>
 								Cerrar Sesión
