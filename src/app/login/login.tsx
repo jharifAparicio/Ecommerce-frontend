@@ -13,7 +13,6 @@ const Login = () => {
 	const [error, setError] = useState("");
 	const router = useRouter();
 
-	// Clear error message after 3 secondsss
 	useEffect(() => {
 		if (error) {
 			const timer = setTimeout(() => setError(""), 3000);
